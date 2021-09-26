@@ -58,7 +58,7 @@ namespace VRTactics.EditModeTests
             Object.DestroyImmediate(prefab.gameObject);
             Object.DestroyImmediate(spawnPoint1.gameObject);
             Object.DestroyImmediate(spawnPoint2.gameObject);
-            Object.Destroy(spawner.gameObject);
+            Object.DestroyImmediate(spawner.gameObject);
             
             foreach (var spawnedObject in spawnedObjects)
             {
