@@ -22,13 +22,10 @@ namespace VRTactics.Utils
         {
             var instances = new List<GameObject>();
 
-            for (var spawned = 0; spawned < count;)
-                foreach (var point in spawnPoints)
-                {
-                    instances.Add(SpawnPrefab(point));
-                    spawned++;
-                    if (spawned >= count) break;
-                }
+            for (var spawned = 0; spawned < count; spawned++)
+            {
+                SpawnPrefab(spawnPoints[spawned % spawnPoints.Length]);
+            }
 
             return instances;
         }
