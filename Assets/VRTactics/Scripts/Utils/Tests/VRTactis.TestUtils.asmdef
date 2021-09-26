@@ -1,0 +1,16 @@
+{
+    "name": "VRTactis.TestingUtils",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1a0d83674d4c44e41bf90181cc9f8102"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
