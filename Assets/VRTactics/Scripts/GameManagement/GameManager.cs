@@ -59,7 +59,10 @@ namespace VRTactics.GameManagement
             findAllEnemiesGoal.Enemies = _enemies;
             goals.Add(findAllEnemiesGoal);
 
-            foreach (var goal in goals) goal.Init(FinishGame);
+            foreach (var goal in goals)
+            {
+                goal.Init(FinishGame);
+            }
 
             // Init
             onGameStarted.Invoke();
@@ -67,7 +70,10 @@ namespace VRTactics.GameManagement
 
         public void FinishGame()
         {
-            foreach (var goal in goals) goal.Deinit();
+            foreach (var goal in goals)
+            {
+                goal.Deinit();
+            }
 
             enemiesSpawner.Clean();
             var results = new GameResultsData(GetOverallResult(), GetEnemiesData());
