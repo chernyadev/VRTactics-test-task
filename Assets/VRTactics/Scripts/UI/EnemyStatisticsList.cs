@@ -27,7 +27,10 @@ namespace VRTactics.UI
 
         private void Clean()
         {
-            foreach (var t in _panels) Destroy(t.gameObject);
+            foreach (var t in _panels)
+            {
+                Destroy(t.gameObject);
+            }
 
             _panels = new List<EnemyStatisticsPanel>();
         }

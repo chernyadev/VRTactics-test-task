@@ -11,7 +11,7 @@ namespace VRTactics.Utils
         [SerializeField]
         private Transform[] spawnPoints;
 
-        private readonly List<GameObject> instatiatedPrefabs = new List<GameObject>();
+        private readonly List<GameObject> _spawnedObjects = new List<GameObject>();
 
         public GameObject SpawnSingle()
         {
@@ -22,26 +22,26 @@ namespace VRTactics.Utils
         {
             var instances = new List<GameObject>();
 
-            for (var spawned = 0; spawned < count;)
-                foreach (var point in spawnPoints)
-                {
-                    instances.Add(SpawnPrefab(point));
-                    spawned++;
-                    if (spawned >= count) break;
-                }
+            for (var spawned = 0; spawned < count; spawned++)
+            {
+                SpawnPrefab(spawnPoints[spawned % spawnPoints.Length]);
+            }
 
             return instances;
         }
 
         public void Clean()
         {
-            foreach (var prefab in instatiatedPrefabs) Destroy(prefab);
+            foreach (var spawnedObject in _spawnedObjects)
+            {
+                Destroy(spawnedObject);
+            }
         }
 
         private GameObject SpawnPrefab(Transform spawnPoint)
         {
             var instance = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
-            instatiatedPrefabs.Add(instance);
+            _spawnedObjects.Add(instance);
 
             return instance;
         }
