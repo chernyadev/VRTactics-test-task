@@ -24,7 +24,7 @@ namespace VRTactics.Utils
 
             for (var spawned = 0; spawned < count; spawned++)
             {
-                SpawnPrefab(spawnPoints[spawned % spawnPoints.Length]);
+                instances.Add(SpawnPrefab(spawnPoints[spawned % spawnPoints.Length]));
             }
 
             return instances;
