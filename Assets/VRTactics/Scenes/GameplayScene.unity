@@ -1678,7 +1678,7 @@ GameObject:
   - component: {fileID: 429703476}
   - component: {fileID: 429703477}
   m_Layer: 0
-  m_Name: A
+  m_Name: StartPoint_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7195,7 +7195,7 @@ GameObject:
   - component: {fileID: 1653761719}
   - component: {fileID: 1653761720}
   m_Layer: 0
-  m_Name: B
+  m_Name: FinishPoint_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
