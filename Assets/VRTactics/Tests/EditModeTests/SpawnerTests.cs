@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 using VRTactics.Utils;
 using VRTactics.Utils.Tests;
 
