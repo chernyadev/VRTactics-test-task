@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace VRTactics.Utils.Tests
 {
-    public class SpawnerTestUtils
+    public static class SpawnerTestUtils
     {
         public static void ConfigureSpawner(Spawner spawner, GameObject prefab, Transform[] spawnPoints)
         {
