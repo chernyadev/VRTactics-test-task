@@ -31,7 +31,6 @@ namespace VRTactics.Characters
 
         public bool IsDetected => DetectionState >= 1.0f;
         public DetectionData DetectionData => new DetectionData(name, Status);
-        public UnityEvent OnDetected => onDetected;
 
         public void Detect(float detectionDelta)
         {

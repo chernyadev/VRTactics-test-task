@@ -7,8 +7,6 @@ namespace VRTactics.Characters
     {
         public bool IsDetected { get; }
         public DetectionData DetectionData { get; }
-        public UnityEvent OnDetected { get; }
-
         public void Detect(float detectionDelta);
     }
 }
