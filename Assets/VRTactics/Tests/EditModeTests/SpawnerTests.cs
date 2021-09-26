@@ -1,11 +1,12 @@
 using NUnit.Framework;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.TestTools;
 using VRTactics.Utils;
+using VRTactics.Utils.Tests;
 
 namespace VRTactics.EditModeTests
 {
-    public class SpawnerTests : MonoBehaviour
+    public class SpawnerTests
     {
         [Test]
         public void Spawner_spawns_correct_amount_of_prefabs()
@@ -15,11 +16,11 @@ namespace VRTactics.EditModeTests
             var prefab = new GameObject("Prefab");
             var spawnPoint = new GameObject("sp").transform;
             var spawner = new GameObject("Spawner").AddComponent<Spawner>();
-            
-            ConfigureSpawner(spawner, prefab, new[] {spawnPoint});
-            
+
+            SpawnerTestUtils.ConfigureSpawner(spawner, prefab, new[] {spawnPoint});
+
             var spawnedObjects = spawner.SpawnCollection(objectsCountToSpawn);
-            
+
             Assert.AreEqual(objectsCountToSpawn, spawnedObjects.Count);
         }
 
@@ -34,9 +35,9 @@ namespace VRTactics.EditModeTests
             var spawnPoint2 = new GameObject("sp2").transform;
             spawnPoint2.position = new Vector3(30, 30, 30);
             var spawnPoints = new[] {spawnPoint1, spawnPoint2};
-            
+
             var spawner = new GameObject("Spawner").AddComponent<Spawner>();
-            ConfigureSpawner(spawner, prefab, spawnPoints);
+            SpawnerTestUtils.ConfigureSpawner(spawner, prefab, spawnPoints);
 
             var spawnedObjects = spawner.SpawnCollection(objectsCountToSpawn);
 
@@ -45,23 +46,6 @@ namespace VRTactics.EditModeTests
                 var spawnPoint = spawnPoints[i % spawnPoints.Length];
                 Assert.AreEqual(spawnPoint.position, spawnedObjects[i].transform.position);
             }
-        }
-
-        private static void ConfigureSpawner(Spawner spawner, GameObject prefab, Transform[] spawnPoints)
-        {
-            var serializedSpawner = new SerializedObject(spawner);
-            
-            var prefabProp = serializedSpawner.FindProperty("prefab");
-            var spawnPointsProp = serializedSpawner.FindProperty("spawnPoints");
-
-            prefabProp.objectReferenceValue = prefab;
-            spawnPointsProp.arraySize = spawnPoints.Length;
-            for (var i = 0; i < spawnPoints.Length; i++)
-            {
-                spawnPointsProp.GetArrayElementAtIndex(i).objectReferenceValue = spawnPoints[i];
-            }
-
-            serializedSpawner.ApplyModifiedProperties();
         }
     }
 }
