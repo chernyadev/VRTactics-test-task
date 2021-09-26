@@ -29,6 +29,15 @@ namespace VRTactics.PlayModeTests
             {
                 Assert.IsTrue(t == null);
             }
+
+            Object.DestroyImmediate(prefab.gameObject);
+            Object.DestroyImmediate(spawnPoint.gameObject);
+            Object.DestroyImmediate(spawner.gameObject);
+
+            foreach (var spawnedObject in spawnedObjects)
+            {
+                Object.DestroyImmediate(spawnedObject);
+            }
         }
     }
 }

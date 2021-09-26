@@ -21,6 +21,15 @@ namespace VRTactics.EditModeTests
             var spawnedObjects = spawner.SpawnCollection(objectsCountToSpawn);
 
             Assert.AreEqual(objectsCountToSpawn, spawnedObjects.Count);
+            
+            Object.DestroyImmediate(prefab.gameObject);
+            Object.DestroyImmediate(spawnPoint.gameObject);
+            Object.DestroyImmediate(spawner.gameObject);
+
+            foreach (var spawnedObject in spawnedObjects)
+            {
+                Object.DestroyImmediate(spawnedObject);
+            }
         }
 
         [Test]
@@ -44,6 +53,16 @@ namespace VRTactics.EditModeTests
             {
                 var spawnPoint = spawnPoints[i % spawnPoints.Length];
                 Assert.AreEqual(spawnPoint.position, spawnedObjects[i].transform.position);
+            }
+            
+            Object.DestroyImmediate(prefab.gameObject);
+            Object.DestroyImmediate(spawnPoint1.gameObject);
+            Object.DestroyImmediate(spawnPoint2.gameObject);
+            Object.Destroy(spawner.gameObject);
+            
+            foreach (var spawnedObject in spawnedObjects)
+            {
+                Object.DestroyImmediate(spawnedObject);
             }
         }
     }
