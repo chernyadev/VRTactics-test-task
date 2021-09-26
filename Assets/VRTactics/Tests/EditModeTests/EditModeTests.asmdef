@@ -5,7 +5,8 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "VRTactics.Runtime",
-        "VRTactis.TestingUtils"
+        "VRTactis.TestingUtils",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [
         "Editor"
