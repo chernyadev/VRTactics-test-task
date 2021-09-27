@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
 
 namespace VRTactics.GameManagement.Goals
 {
@@ -10,8 +10,7 @@ namespace VRTactics.GameManagement.Goals
         [SerializeField]
         private bool finishGameAfterStateChange;
 
-
-        private readonly UnityEvent _onGameFinishRequest = new UnityEvent();
+        private Action _onGameFinishRequestCallback;
         private bool _state;
         public bool State
         {
@@ -20,20 +19,20 @@ namespace VRTactics.GameManagement.Goals
             {
                 if (_state == value) return;
                 _state = value;
-                if (finishGameAfterStateChange) _onGameFinishRequest?.Invoke();
+                if (finishGameAfterStateChange) _onGameFinishRequestCallback?.Invoke();
             }
         }
 
-        public void Init(UnityAction callback)
+        public virtual void Init(Action onGameFinishRequestCallback)
         {
             ResetState();
-            _onGameFinishRequest.AddListener(callback);
+            _onGameFinishRequestCallback = onGameFinishRequestCallback;
         }
 
-        public void Deinit()
+        public virtual void Deinit()
         {
             ResetState();
-            _onGameFinishRequest.RemoveAllListeners();
+            _onGameFinishRequestCallback = null;
         }
 
         private void ResetState()

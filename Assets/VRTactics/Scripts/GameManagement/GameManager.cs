@@ -54,28 +54,27 @@ namespace VRTactics.GameManagement
                 _enemies.Add(enemy.GetComponent<IDetectable>());
             }
 
-            // State goals
-            var findAllEnemiesGoal = ScriptableObject.CreateInstance<FindAllEnemies>();
-            findAllEnemiesGoal.Enemies = _enemies;
-            goals.Add(findAllEnemiesGoal);
-
+            // Init goals
             foreach (var goal in goals)
             {
                 goal.Init(FinishGame);
             }
 
-            // Init
             onGameStarted.Invoke();
         }
 
         public void FinishGame()
         {
+            // Terminating goals
             foreach (var goal in goals)
             {
                 goal.Deinit();
             }
 
+            // Destroying spawned enemies
             enemiesSpawner.Clean();
+            
+            // Publishing game results
             var results = new GameResultsData(GetOverallResult(), GetEnemiesData());
             onGameFinished.Invoke(results);
         }
