@@ -13,24 +13,23 @@ namespace VRTactics.GameManagement.Goals
 
         public override void Init(Action onGameFinishRequestCallback)
         {
-            _enemies = FindObjectsOfType<DetectionController>().ToList();
+            base.Init(onGameFinishRequestCallback);
 
+            _enemies = FindObjectsOfType<DetectionController>().ToList();
+            
             foreach (var enemy in _enemies)
             {
                 enemy.onDetected.AddListener(DetectionHandler);
             }
 
-            base.Init(onGameFinishRequestCallback);
+            DetectionHandler();
         }
 
         public override void Deinit()
         {
             foreach (var enemy in _enemies)
             {
-                if (enemy)
-                {
-                    enemy.onDetected.RemoveListener(DetectionHandler);
-                }
+                enemy.onDetected.RemoveListener(DetectionHandler);
             }
 
             _enemies.Clear();

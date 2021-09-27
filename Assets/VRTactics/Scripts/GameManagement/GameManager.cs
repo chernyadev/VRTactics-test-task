@@ -11,6 +11,7 @@ namespace VRTactics.GameManagement
 {
     public class GameManager : MonoBehaviour
     {
+        private const int MIN_ENEMIES_COUNT = 1;
         private const int MAX_ENEMIES_COUNT = 100;
 
         [Header("Callbacks")]
@@ -26,7 +27,7 @@ namespace VRTactics.GameManagement
 
         [Space]
         [SerializeField]
-        [Range(0, MAX_ENEMIES_COUNT)]
+        [Range(MIN_ENEMIES_COUNT, MAX_ENEMIES_COUNT)]
         private int enemiesCount = 4;
 
         [Space]
