@@ -13,10 +13,10 @@ namespace VRTactics.PlayModeTests
 {
     public class GameplayTests
     {
-        private CharacterController _playerController;
-        private GameManager _gameManager;
         private DestinationTrigger _destination;
         private List<DetectionController> _enemies;
+        private GameManager _gameManager;
+        private CharacterController _playerController;
 
         [UnityTest]
         [LoadScene("Assets/VRTactics/Scenes/GameplayScene.unity")]
@@ -71,7 +71,7 @@ namespace VRTactics.PlayModeTests
 
                 serializedState.ApplyModifiedProperties();
                 serializedFsm.ApplyModifiedProperties();
-                
+
                 idleState.OnEnter();
             }
 

@@ -17,7 +17,10 @@ namespace VRTactics.Characters.FSM
 
         public override void OnUpdate()
         {
-            if (IsAgentAvailable) Agent.destination = _homePosition;
+            if (IsAgentAvailable)
+            {
+                Agent.destination = _homePosition;
+            }
         }
     }
 }

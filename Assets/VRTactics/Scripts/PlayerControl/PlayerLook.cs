@@ -47,7 +47,10 @@ namespace VRTactics.PlayerControl
         private void LookInputHandler(Vector2 lookInput)
         {
             _lookInput = lookInput;
-            if (invertY) _lookInput.y *= -1;
+            if (invertY)
+            {
+                _lookInput.y *= -1;
+            }
         }
     }
 }

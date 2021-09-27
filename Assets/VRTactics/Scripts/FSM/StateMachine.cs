@@ -8,12 +8,19 @@ namespace VRTactics.FSM
 
         private void Update()
         {
-            if (_currentState != null) _currentState.OnUpdate();
+            if (_currentState != null)
+            {
+                _currentState.OnUpdate();
+            }
         }
 
         public void Transition(State nextState)
         {
-            if (_currentState) _currentState.OnExit();
+            if (_currentState)
+            {
+                _currentState.OnExit();
+            }
+
             _currentState = nextState;
             _currentState.OnEnter();
         }

@@ -25,7 +25,7 @@ namespace VRTactics.PlayModeTests
             var sceneToAdd = new EditorBuildSettingsScene(_scenePath, true);
             sceneSettings[sceneSettings.Length - 1] = sceneToAdd;
             EditorBuildSettings.scenes = sceneSettings;
-            
+
             yield return EditorSceneManager.LoadSceneAsyncInPlayMode(_scenePath, new LoadSceneParameters(LoadSceneMode.Single));
         }
 

@@ -70,13 +70,13 @@ namespace VRTactics.GameManagement
 
             // Destroying spawned enemies
             enemiesSpawner.Clean();
-            
+
             // Terminating goals
             foreach (var goal in goals)
             {
                 goal.Deinit();
             }
-            
+
             onGameFinished.Invoke(results);
         }
 

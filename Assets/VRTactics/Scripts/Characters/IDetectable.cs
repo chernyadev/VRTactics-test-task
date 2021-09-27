@@ -1,4 +1,3 @@
-using UnityEngine.Events;
 using VRTactics.GameManagement;
 
 namespace VRTactics.Characters

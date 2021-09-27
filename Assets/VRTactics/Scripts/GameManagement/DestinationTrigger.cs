@@ -16,7 +16,10 @@ namespace VRTactics.GameManagement
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!IsLayerMatchesMask(other)) return;
+            if (!IsLayerMatchesMask(other))
+            {
+                return;
+            }
 
             IsReached = true;
             onDestinationReached.Invoke();
@@ -24,7 +27,10 @@ namespace VRTactics.GameManagement
 
         private void OnTriggerExit(Collider other)
         {
-            if (!IsLayerMatchesMask(other)) return;
+            if (!IsLayerMatchesMask(other))
+            {
+                return;
+            }
 
             IsReached = false;
         }
