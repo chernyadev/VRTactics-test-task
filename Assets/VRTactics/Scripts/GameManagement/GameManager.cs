@@ -40,7 +40,7 @@ namespace VRTactics.GameManagement
             StartGame();
         }
 
-        public void StartGame()
+        private void StartGame()
         {
             // Spawn player
             var playerInstance = playerSpawner.SpawnSingle();
@@ -63,25 +63,26 @@ namespace VRTactics.GameManagement
             onGameStarted.Invoke();
         }
 
-        public void FinishGame()
+        private void FinishGame()
         {
+            // Collecting game results
+            var results = new GameResultsData(GetOverallResult(), GetEnemiesData());
+
+            // Destroying spawned enemies
+            enemiesSpawner.Clean();
+            
             // Terminating goals
             foreach (var goal in goals)
             {
                 goal.Deinit();
             }
-
-            // Destroying spawned enemies
-            enemiesSpawner.Clean();
             
-            // Publishing game results
-            var results = new GameResultsData(GetOverallResult(), GetEnemiesData());
             onGameFinished.Invoke(results);
         }
 
         private OverallGameResult GetOverallResult()
         {
-            return goals.All(g => g.State) ? OverallGameResult.Victory : OverallGameResult.Defeat;
+            return goals.All(g => g.IsAchieved) ? OverallGameResult.Victory : OverallGameResult.Defeat;
         }
 
         private List<DetectionData> GetEnemiesData()
