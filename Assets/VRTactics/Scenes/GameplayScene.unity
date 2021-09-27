@@ -226,6 +226,7 @@ MonoBehaviour:
   goals:
   - {fileID: 11400000, guid: 243a9b91f0d90314eaaef07ff4120166, type: 2}
   - {fileID: 11400000, guid: fa22522fc286a7d4a9eaac51fee0896f, type: 2}
+  - {fileID: 11400000, guid: ff79f0d9fe5919e449dc2f62be7e9bfd, type: 2}
 --- !u!1 &57026037
 GameObject:
   m_ObjectHideFlags: 0
@@ -7247,7 +7248,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 243a9b91f0d90314eaaef07ff4120166, type: 2}
         m_TargetAssemblyTypeName: VRTactics.GameManagement.GameGoal, Assembly-CSharp
-        m_MethodName: set_State
+        m_MethodName: set_IsAchieved
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

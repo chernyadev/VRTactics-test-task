@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using VRTactics.Characters;
@@ -8,11 +9,38 @@ namespace VRTactics.GameManagement.Goals
     [CreateAssetMenu(menuName = "SO/Goals/Find All Enemies", fileName = "FindAllEnemies")]
     public class FindAllEnemies : GameGoal
     {
-        public List<IDetectable> Enemies { private get; set; }
+        private List<DetectionController> _enemies;
+
+        public override void Init(Action onGameFinishRequestCallback)
+        {
+            _enemies = FindObjectsOfType<DetectionController>().ToList();
+
+            foreach (var enemy in _enemies)
+            {
+                enemy.onDetected.AddListener(DetectionHandler);
+            }
+
+            base.Init(onGameFinishRequestCallback);
+        }
+
+        public override void Deinit()
+        {
+            foreach (var enemy in _enemies)
+            {
+                if (enemy)
+                {
+                    enemy.onDetected.RemoveListener(DetectionHandler);
+                }
+            }
+
+            _enemies.Clear();
+
+            base.Deinit();
+        }
 
         private void DetectionHandler()
         {
-            if (Enemies.All(e => e.IsDetected)) State = true;
+            if (_enemies.All(e => e.IsDetected)) IsAchieved = true;
         }
     }
 }
