@@ -1,9 +1,6 @@
 name: Auto Tests
 
 on:
-  pull_request:
-    branches:
-      - develop
   push:
     branches:
       - develop
