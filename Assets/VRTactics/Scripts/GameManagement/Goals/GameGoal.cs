@@ -11,14 +11,15 @@ namespace VRTactics.GameManagement.Goals
         private bool finishGameAfterStateChange;
 
         private Action _onGameFinishRequestCallback;
-        private bool _state;
-        public bool State
+        private bool _isAchieved;
+
+        public bool IsAchieved
         {
-            get => _state;
+            get => _isAchieved;
             set
             {
-                if (_state == value) return;
-                _state = value;
+                if (_isAchieved == value) return;
+                _isAchieved = value;
                 if (finishGameAfterStateChange) _onGameFinishRequestCallback?.Invoke();
             }
         }
@@ -37,7 +38,7 @@ namespace VRTactics.GameManagement.Goals
 
         private void ResetState()
         {
-            _state = initialState;
+            _isAchieved = initialState;
         }
     }
 }

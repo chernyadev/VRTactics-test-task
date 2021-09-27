@@ -40,7 +40,7 @@ namespace VRTactics.GameManagement.Goals
 
         private void DetectionHandler()
         {
-            if (_enemies.All(e => e.IsDetected)) State = true;
+            if (_enemies.All(e => e.IsDetected)) IsAchieved = true;
         }
     }
 }
