@@ -22,10 +22,17 @@ namespace VRTactics.Characters
             get => _detectionState;
             set
             {
-                if (_detectionState.Equals(value)) return;
+                if (_detectionState.Equals(value))
+                {
+                    return;
+                }
+
                 _detectionState = Mathf.Clamp01(value);
                 onDetectionStateChanged.Invoke(_detectionState);
-                if (IsDetected) onDetected.Invoke();
+                if (IsDetected)
+                {
+                    onDetected.Invoke();
+                }
             }
         }
 

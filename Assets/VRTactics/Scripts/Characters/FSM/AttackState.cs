@@ -24,15 +24,24 @@ namespace VRTactics.Characters.FSM
         public override void OnUpdate()
         {
             TryAttackPlayer();
-            if (IsAgentAvailable) Agent.destination = _target.position;
+            if (IsAgentAvailable)
+            {
+                Agent.destination = _target.position;
+            }
         }
 
         private void TryAttackPlayer()
         {
-            if (Agent.remainingDistance > attackDistance) return;
+            if (Agent.remainingDistance > attackDistance)
+            {
+                return;
+            }
 
             var collidersCount = Physics.OverlapSphereNonAlloc(Agent.transform.position, attackDistance, _results, attackMask);
-            if (collidersCount <= 0) return;
+            if (collidersCount <= 0)
+            {
+                return;
+            }
 
             for (var i = 0; i < collidersCount; i++)
             {

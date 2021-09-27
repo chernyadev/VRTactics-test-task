@@ -14,7 +14,10 @@ namespace VRTactics.Characters
         private void FixedUpdate()
         {
             var ray = new Ray(raycastRoot.position, raycastRoot.forward);
-            if (!Physics.Raycast(ray, out var hit, detectionDistance, detectionMask)) return;
+            if (!Physics.Raycast(ray, out var hit, detectionDistance, detectionMask))
+            {
+                return;
+            }
 
             var detectable = hit.transform.GetComponentInChildren<IDetectable>();
             detectable?.Detect(Time.fixedDeltaTime);

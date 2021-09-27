@@ -22,7 +22,10 @@ namespace VRTactics.Characters.FSM
 
         public override void OnUpdate()
         {
-            if (ShouldAttack()) Machine.Transition(NextState);
+            if (ShouldAttack())
+            {
+                Machine.Transition(NextState);
+            }
         }
 
         private bool ShouldAttack()

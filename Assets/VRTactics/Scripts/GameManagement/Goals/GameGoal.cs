@@ -9,18 +9,25 @@ namespace VRTactics.GameManagement.Goals
         private bool initialState;
         [SerializeField]
         private bool finishGameAfterStateChange;
+        private bool _isAchieved;
 
         private Action _onGameFinishRequestCallback;
-        private bool _isAchieved;
 
         public bool IsAchieved
         {
             get => _isAchieved;
             set
             {
-                if (_isAchieved == value) return;
+                if (_isAchieved == value)
+                {
+                    return;
+                }
+
                 _isAchieved = value;
-                if (finishGameAfterStateChange) _onGameFinishRequestCallback?.Invoke();
+                if (finishGameAfterStateChange)
+                {
+                    _onGameFinishRequestCallback?.Invoke();
+                }
             }
         }
 
