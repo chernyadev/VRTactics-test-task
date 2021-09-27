@@ -22,7 +22,7 @@ jobs:
         targetPlatform:
           - StandaloneLinux64
         testMode:
-          # - playmode
+          - playmode
           - editmode
 
     name: Testing VRTactics
